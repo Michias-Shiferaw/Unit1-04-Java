@@ -1,0 +1,59 @@
+Public Class Form1
+    ' This Program calculates how long you should put your specific food in the microwave for based on 
+    ' the quantity should be on for.
+    ' @author Michias Shiferaw
+    ' @Version 2.0
+    ' @since 2020-02-21.
+
+    'Declare necessary public variables
+    Dim mealinput As String
+    Dim rate As Double
+    Dim amount As Integer
+    'Dim rate1 As String
+    Dim amount1 As String
+    Dim cookTime As Double
+    Dim cookTimer As String
+    Private Sub Form1_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
+        'Intro
+        MsgBox("Hello! Here to warm up a tasty snack? This is the place to be!")
+        'User input process
+        mealinput = InputBox("Our choices are the following ; Sub, Pizza and Soup")
+
+        If mealinput = ("Sub") Then
+            rate = 60
+        ElseIf mealinput = ("Pizza") Then
+            rate = 45
+        ElseIf mealinput = ("Soup") Then
+            rate = 105
+        Else
+            MsgBox(("Sorry we dont have any " _
+                            + (mealinput + ". Bye Bye")))
+            'Close the program as the value inputted is not qualified to continue through the program
+            Application.Exit()
+        End If
+
+
+        'User Input for quantity
+        MsgBox(("Great choice!"))
+        amount = InputBox(("How many would you like. (choice from 1 to 3) "))
+
+        If ((amount = 1) OrElse ((amount = 2) OrElse (amount = 3))) Then
+            'Calculating Process
+
+            'Calculating using the provided variables and the user's input
+            cookTime = (rate + (rate * (0.5 * (amount - 1))))
+
+            'Convert numeric values into strings
+            cookTimer = cookTime
+            amount1 = amount
+            'Output the time to cook the meal 
+            MsgBox(("It will take " + (cookTimer + "s to cook " + amount1 + " " + mealinput + "(s)!")))
+        Else
+            MsgBox(("Sorry we don't have " + (amount1 + (" of " + (mealinput + ". Bye Bye")))))
+            'Close the program as the value inputted is not qualified to continue through the program
+            Application.Exit()
+        End If
+
+    End Sub
+End Class
